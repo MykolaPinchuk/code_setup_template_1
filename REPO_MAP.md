@@ -12,11 +12,21 @@ Keep this file short. Update it only when something important changes.
 - `agent_logs/current.md` — live execution log for this cycle.
 - `docs/adr/0001-agentic-workflow-protocol.md` — foundational workflow decision.
 - `.codex/skills/onboard/SKILL.md` — deterministic onboarding skill definition.
+- `.codex/skills/checkpoint/SKILL.md` — safe checkpoint commit workflow.
+- `.codex/skills/handoff/SKILL.md` — wrap-up + handoff skill definition.
 - `.codex/skills/wrap-up/SKILL.md` — wrap-up + handoff skill definition.
 
 ## Where results live
 - `agent_logs/` — per-cycle logs and index.
 - `docs/adr/` — decision records.
+- `runs/` — per-run outputs (ignored except `runs/**/{summary,report}.md`).
+
+## Utility scripts
+- `scripts/sanitize_runs_markdown.py` — replace embedded images in `runs/**/{summary,report}.md` with links.
+
+## Local-only directories (ignored)
+- `data/` — datasets and derived artifacts (see `data/README.md`).
+- `secrets/` — local credentials (see `secrets/README.md`).
 
 ## Hot paths (last 1–2 cycles)
 - (path) — (why it's being touched)

@@ -26,8 +26,31 @@ ENV/
 id_rsa
 id_ed25519
 
-# Project artifacts (add project-specific paths)
-# runs/
-# outputs/
-# artifacts/
-# data/
+# Repo-local secrets (never commit)
+secrets/**
+!secrets/
+!secrets/README.md
+
+# Runs / artifacts
+# Track only lightweight "result summaries" from runs to avoid repo bloat:
+# - `runs/**/summary.md`
+# - `runs/**/report.md`
+runs/**
+!runs/**/
+!runs/**/summary.md
+!runs/**/report.md
+outputs/
+artifacts/
+
+# Data (never commit raw/large datasets)
+data/**
+!data/
+!data/README.md
+!data/raw/
+!data/raw/README.md
+!data/processed/
+!data/processed/README.md
+
+# Notebooks (optional; keep artifacts out of git)
+*.ipynb
+.ipynb_checkpoints/

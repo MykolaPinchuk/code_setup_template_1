@@ -8,8 +8,10 @@ That `agents.md` should point agents here for repo-local workflow.
 ## Triggers
 - User message **exactly**: `Onboard`
   - Perform the onboarding procedure below.
+- User message **exactly**: `checkpoint`
+  - Perform a safe checkpoint commit (use `.codex/skills/checkpoint/SKILL.md` as the procedure).
 - User message contains: `wrap up` or `handoff` (any case)
-  - Perform the wrap-up + handoff procedure below.
+  - Perform the wrap-up + handoff procedure below (procedure is also captured in `.codex/skills/handoff/SKILL.md` and `.codex/skills/wrap-up/SKILL.md`).
 
 ## Onboard procedure (trigger: `Onboard`)
 **Goal:** quickly understand current repo state without indiscriminate scanning.

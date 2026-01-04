@@ -17,6 +17,16 @@ Start here (in this order):
 - `agent_logs/current.md` (live execution log; history indexed in `agent_logs/INDEX.md`)
 - `docs/adr/` (decisions that should persist across agent generations)
 
+## Agent triggers
+- `Onboard` — deterministic onboarding
+- `checkpoint` — safe checkpoint commit (see `.codex/skills/checkpoint/SKILL.md`)
+- `handoff` / `wrap up` — update handoff docs, rotate logs, and create a safe handoff commit
+
+## Runs and artifacts
+- By default, `.gitignore` ignores everything under `runs/` except `runs/**/{summary,report}.md`.
+- If `runs/**/{summary,report}.md` contains embedded images, convert them to links before committing:
+  - `python scripts/sanitize_runs_markdown.py --root runs --write`
+
 ## Context manager integration
 - Configure this repo via `.context-profile.yml` (includes the `codex-workflow` instruction profile).
 - Sync (generates `agents.md` / `business_context.md`): `python /path/to/context-manager-1/sync_context.py --repo /path/to/this/repo`
@@ -31,14 +41,8 @@ Start here (in this order):
 
 ### Wrap-up / handoff
 - Send a message containing `handoff` (or `wrap up`).
-- The agent will update `HANDOFF.md`, rotate logs under `agent_logs/`, and (if the repo is a git repo) create a safe handoff commit.
 
 ## Repo conventions (high level)
 - Keep secrets and large generated artifacts out of git (update `.gitignore` as needed).
 - Keep `HANDOFF.md` accurate; do not rely on chat history for continuity.
 - Keep `REPO_MAP.md` short; only update it when entrypoints/structure change.
-
-## Customize for your project
-- Replace the top of this README with your project overview and quickstart.
-- Update `HANDOFF.md` "Current slice" to the next concrete objective.
-- Add/ignore any project-specific artifact directories in `.gitignore`.
